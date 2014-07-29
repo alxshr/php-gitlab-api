@@ -36,9 +36,6 @@ class MergeRequests extends AbstractApi
 
     public function create($project_id, $source, $target, $title, $assignee = null, $target_project_id = null, $description = null)
     {
-        if ($target_project_id && ! is_numeric($target_project_id)) {
-            throw new \InvalidArgumentException('target_project_id should be numeric, the project name is not allowed');
-        }
 
         return $this->post('projects/'.urlencode($project_id).'/merge_requests', array(
             'source_branch' => $source,
